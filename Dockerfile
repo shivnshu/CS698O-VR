@@ -36,3 +36,11 @@ WORKDIR /workspace
 RUN chmod -R a+w /workspace
 
 # Additional commands follow
+RUN apt-get update && apt-get install -y zsh
+RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && \
+    chsh -s /bin/zsh
+#RUN sed -i -e 's/robbyrussell/avit/g' ~/.zshrc
+ENTRYPOINT ["/bin/zsh"]
+
+COPY . .
