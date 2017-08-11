@@ -32,15 +32,23 @@ RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compr
 
 RUN git clone https://github.com/pytorch/vision.git && cd vision && pip install -v .
 
-WORKDIR /workspace
-RUN chmod -R a+w /workspace
-
 # Additional commands follow
 RUN apt-get update && apt-get install -y zsh
 RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
     cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc && \
     chsh -s /bin/zsh
 #RUN sed -i -e 's/robbyrussell/avit/g' ~/.zshrc
-ENTRYPOINT ["/bin/zsh"]
 
-COPY . .
+RUN pip install jupyter
+
+# Add a notebook profile. 
+RUN mkdir -p -m 700 /root/.jupyter/ && \ 
+	echo "c.NotebookApp.ip = '*'\nc.NotebookApp.open_browser = False\nc.NotebookApp.password = u'sha1:e94bb1861d4e:0046602b5a1abfea909c54e1615dfda5d4dae851'\nc.NotebookApp.allow_root = True" >> /root/.jupyter/jupyter_notebook_config.py
+
+EXPOSE 8888
+
+RUN mkdir ~/Project
+WORKDIR ~/Project
+RUN chmod -R a+w ~/Project
+
+ENTRYPOINT ["/bin/zsh"]
