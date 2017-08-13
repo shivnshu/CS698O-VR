@@ -4,3 +4,6 @@ basics/*
 !basics/numpy.ipynb
 !basics/pytorch.ipynb
 !basics/matplotlib.ipynb
+
+*~
+*/*~
