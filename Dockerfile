@@ -39,7 +39,7 @@ RUN git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh && \
     chsh -s /bin/zsh
 #RUN sed -i -e 's/robbyrussell/avit/g' ~/.zshrc
 
-RUN pip install jupyter
+RUN pip install jupyter matplotlib
 
 # Add a notebook profile. 
 RUN mkdir -p -m 700 /root/.jupyter/ && \ 
