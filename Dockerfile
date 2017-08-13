@@ -47,8 +47,8 @@ RUN mkdir -p -m 700 /root/.jupyter/ && \
 
 EXPOSE 8888
 
-RUN mkdir ~/Project
-WORKDIR ~/Project
-RUN chmod -R a+w ~/Project
+RUN mkdir /root/Project
+WORKDIR /root/Project
+RUN chmod -R a+w /root/Project
 
 ENTRYPOINT ["/bin/zsh"]
