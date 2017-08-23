@@ -45,6 +45,10 @@ RUN pip install jupyter matplotlib
 RUN mkdir -p -m 700 /root/.jupyter/ && \ 
 	echo "c.NotebookApp.ip = '*'\nc.NotebookApp.open_browser = False\nc.NotebookApp.password = u'sha1:e94bb1861d4e:0046602b5a1abfea909c54e1615dfda5d4dae851'\nc.NotebookApp.allow_root = True" >> /root/.jupyter/jupyter_notebook_config.py
 
+# Some pretrained nn models for assignment 1
+RUN mkdir -p /root/.torch/models
+ADD https://download.pytorch.org/models/vgg16-397923af.pth https://download.pytorch.org/models/resnet18-5c106cde.pth /root/.torch/models/
+
 EXPOSE 8888
 
 RUN mkdir /root/Project
