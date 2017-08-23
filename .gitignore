@@ -5,5 +5,7 @@ basics/*
 !basics/pytorch.ipynb
 !basics/matplotlib.ipynb
 
+.ipynb_checkpoints
+
 *~
 */*~
