@@ -22,7 +22,7 @@ RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda2-la
      /opt/conda/bin/conda clean -ya 
 ENV PATH /opt/conda/envs/pytorch-py27/bin:$PATH
 RUN conda install --name pytorch-py27 -c soumith magma-cuda80
-# This must be done before pip so that requirements.txt is available
+# This should be done before pip so that requirements.txt is available
 WORKDIR /opt/pytorch
 COPY pytorch/ .
 
