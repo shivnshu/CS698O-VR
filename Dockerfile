@@ -26,7 +26,7 @@ RUN conda install --name pytorch-py27 -c soumith magma-cuda80
 WORKDIR /opt/pytorch
 COPY pytorch/ .
 
-RUN TORCH_CUDA_ARCH_LIST="3.5 5.2 6.0 6.1+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
+RUN TORCH_CUDA_ARCH_LIST="3.5 5.0 5.2 6.0 6.1+PTX" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" \
     CMAKE_PREFIX_PATH="$(dirname $(which conda))/../" \
     pip install -v .
 
